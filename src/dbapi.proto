@@ -1,0 +1,30 @@
+syntax = "proto2";
+
+
+package dbapipb;
+
+
+message KV
+{
+	optional bytes key = 1;
+	optional bytes value = 2;
+}
+
+message Request
+{
+	required string db = 1;
+	required string cmd = 2;
+	optional string name = 3;
+	repeated bytes key = 4;
+	optional uint64 limit = 5;
+	optional bytes value = 6;
+}
+
+message Response
+{
+	required bool success = 1;
+	optional int32 errcode = 2;
+	optional string coder = 3;
+	repeated KV values = 4;
+}
+
